@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Listar Periféricos</title>
+</head>
+<body>
+    <button><a href="{% url 'core:criar-periferico' %}">Adicionar Periférico</a></button>
+    <h1>Lista de Periféricos</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome do Periférico</th>
+            <th>Nome do Computador</th>
+        </tr>
+        {% for periferico in periferico_lista %}
+            <tr>
+                <td>{{ periferico.id }}</td>
+                <td>{{ periferico.nome }}</td>
+                <td>{{ periferico.computador }}</td>
+                <td><a href="{% url 'core:editar-periferico' periferico.id %}">Editar</a></td>
+                <td><a href="{% url 'core:deletar-periferico' periferico.id %}">Deletar</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

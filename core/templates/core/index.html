@@ -1,0 +1,25 @@
+{% if computador_lista %}
+<div>
+    <button><a href="{% url 'core:criar-computador' %}">Adicionar Computador</a></button></div>
+    <button><a href="{% url 'core:periferico' %}"> perifericos</a></button>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Cor</th>
+            <th>Data</th>
+        </tr>
+        {% for computador in computador_lista %}
+            <tr>
+                <td>{{ computador.id }}</td>
+                <td>{{ computador.nome }}</td>
+                <td>{{ computador.cor }}</td>
+                <td>{{ computador.data }}</td>
+                <td><a href="{% url 'core:editar-computador' computador.id %}">Editar</a></td>
+                <td><a href="{% url 'core:deletar-computador' computador.id %}">Deletar</a></td>
+            </tr>
+        {% endfor %}
+{% else %}
+    <p>Nenhum computador disponível.</p>
+{% endif %}
